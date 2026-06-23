@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Card from '../components/SingleCard';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Card from "../components/SingleCard";
+import axios from "axios";
 
 const Cards = ({ searchString }) => {
   const [trend, setTrend] = useState(null);
@@ -12,10 +12,10 @@ const Cards = ({ searchString }) => {
     const fetchTrend = async () => {
       try {
         const options = {
-          method: 'GET',
-          url: 'https://yfapi.net/v1/finance/trending/US',
+          method: "GET",
+          url: "https://yfapi.net/v1/finance/trending/US",
           headers: {
-            'x-api-key': apiKey,
+            "x-api-key": apiKey,
           },
         };
         const response = await axios.request(options);
@@ -39,12 +39,7 @@ const Cards = ({ searchString }) => {
             <div className="row text-center wrapper">
               {trend.quotes.slice(0, 10).map((stocks) => {
                 if (findValue(stocks.symbol)) {
-                  return (
-                    <Card
-                      key={stocks.symbol}
-                      symbol={stocks.symbol}
-                    />
-                  );
+                  return <Card key={stocks.symbol} symbol={stocks.symbol} />;
                 } else {
                   return null;
                 }
